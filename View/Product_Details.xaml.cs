@@ -36,7 +36,7 @@ namespace Inventory.View
         string query = "";
         SqlCommand cmd = new SqlCommand();
         SqlConnection con = new SqlConnection();
-        string imageLocation = "D:\\Nazmul IDB\\ASPDotNet\\V3.3\\Inventory\\images\\";
+       // string imageLocation = "C:\\Users\\IDB_C#\\Downloads\\V3.4\\Inventory\\images\\";
         public Product_Details(string productID, string action)
         {
             InitializeComponent();
@@ -80,10 +80,13 @@ namespace Inventory.View
         private void update_Confirm(object sender, RoutedEventArgs e)
         {
 
-            File.Copy(lblImagePath.Text, Path.Combine(imageLocation, Path.GetFileName(lblImagePath.Text)), true);
 
             if (txb_itemName.Text != null && txb_description.Text != null && cmb_supplier.Text != null && cmb_catagory.Text != null && txb_unitPrice.Text != null && txb_quantityAvailable.Text != null && txb_purchasePrice.Text != null && txb_quantityStock.Text != null)
             {
+                if (lblImagePath.Text.Any())
+                {
+                    File.Copy(lblImagePath.Text, Path.Combine(Static.imageLocation, Path.GetFileName(lblImagePath.Text)), true);
+                }
                 using (con = new SqlConnection(cs))
                 {
                     con.Open();
@@ -149,7 +152,7 @@ namespace Inventory.View
             con.Open();
             cmd = new SqlCommand("delete from ims.Products "
                                  + "WHERE item_code = @item_code", con);
-            cmd.Parameters.AddWithValue("@SupplierID", _productID);
+            cmd.Parameters.AddWithValue("@item_code", _productID);
             int rowCount = cmd.ExecuteNonQuery();
             if (rowCount > 0)
             {
@@ -215,7 +218,7 @@ namespace Inventory.View
                 }
                 else
                 {
-                    string imagePath = imageLocation+ reader["Image"].ToString();
+                    string imagePath = Static.imageLocation+ reader["Image"].ToString();
                     photo.Source = new BitmapImage(new Uri(imagePath));
                 }
                 
@@ -317,7 +320,11 @@ namespace Inventory.View
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            File.Copy(lblImagePath.Text, Path.Combine(imageLocation, Path.GetFileName(lblImagePath.Text)), true);
+            if (lblImagePath.Text != null)
+            {
+                File.Copy(lblImagePath.Text, Path.Combine(Static.imageLocation, Path.GetFileName(lblImagePath.Text)), true);
+
+            }
             if (txb_itemName.Text != null && txb_description.Text != null && cmb_supplier.Text != null && cmb_catagory.Text != null && txb_unitPrice.Text != null && txb_quantityAvailable.Text != null && txb_purchasePrice.Text != null && txb_quantityStock.Text != null)
             {
                 con = new SqlConnection(cs);
