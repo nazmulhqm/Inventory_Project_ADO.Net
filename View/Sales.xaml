@@ -1,0 +1,103 @@
+﻿<Page x:Class="Inventory.View.Sales"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Inventory.View"
+      mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="Order">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <local:Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+        <Border Padding="5" Grid.Row="1">
+        <StackPanel Margin="5" Grid.Row="1" HorizontalAlignment="Center" Width="Auto">
+            <StackPanel HorizontalAlignment="Center" Background="{DynamicResource MaterialDesignPaper}" Width="695">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical" Width="224" Margin="0,0,30,0">
+                        <Label Content="Customer Name:"/>
+                            <TextBox Foreground="#FFDBAD7F" Style="{DynamicResource MaterialDesignTextBox}"
+                    x:Name="cmb_ContactID"
+                    FontSize="14" Width="224" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Width="311" Margin="100,0,0,0">
+                        <Label Margin="10,0,50,0" Content="Gender:" VerticalAlignment="Center"/>
+                            <RadioButton Foreground="#FFDBAD7F"  Margin="0,0,50,0" x:Name="rb_male" Content="Male"/>
+                            <RadioButton Foreground="#FFDBAD7F"  Margin="0,0,50,0" x:Name="rb_female" Content="Female"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" >
+                        <StackPanel VerticalAlignment="Bottom" Orientation="Vertical" Width="221" Margin="0,0,10,0">
+                        <Label Content="Address:"/>
+                            <TextBox Foreground="#FFDBAD7F"  x:Name="txb_address" FontSize="14" Height="30" Style="{DynamicResource MaterialDesignTextBox}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="230" Margin="10,0,0,3">
+                        <Label Content="City"/>
+                            <ComboBox Foreground="#FFDBAD7F"  x:Name="cmb_city" Style="{DynamicResource MaterialDesignFilledComboBox}"/>
+                    </StackPanel>
+                        <StackPanel VerticalAlignment="Bottom" Orientation="Vertical" Width="215" Margin="10,0,10,0">
+                            <Label Content="Phone:"/>
+                            <TextBox Foreground="#FFDBAD7F"  x:Name="txb_Phone" FontSize="14" Height="30" Style="{DynamicResource MaterialDesignTextBox}"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <StackPanel Orientation="Vertical" Width="230" Margin="0,0,0,3">
+                        <Label Content="Email"/>
+                            <TextBox Foreground="#FFDBAD7F"  FontSize="14" x:Name="txb_email" Style="{DynamicResource MaterialDesignTextBox}"/>
+                    </StackPanel>  
+                    <StackPanel Width="230" Margin="10,0,0,0" HorizontalAlignment="Left">
+                    <Label Content="Order Date:" Height="23" Width="301"/>
+                            <DatePicker Foreground="#FFDBAD7F"  x:Name="dpOrderDate" Style="{DynamicResource MaterialDesignDatePicker}" Margin="0,5,0,10" Width="220"/>
+                </StackPanel>
+                </StackPanel>
+
+            </StackPanel>
+
+            <!-- Product Selection Part -->
+            <StackPanel Margin="0,10,0,0" Background="{DynamicResource MaterialDesignPaper}">
+                <Label Content="Available Products:"/>
+                    <ComboBox Foreground="#FFDBAD7F"  x:Name="cmbAvailableProducts" Style="{DynamicResource MaterialDesignFilledComboBox}" Margin="0,5,0,10"/>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical" Width="301" Margin="0,0,10,0">
+                            <TextBox Foreground="#FFDBAD7F"  FontSize="20"  VerticalContentAlignment="Bottom" x:Name="txtProductQuantity" Style="{DynamicResource MaterialDesignTextBox}" Margin="0,5,0,10"
+                         materialDesign:HintAssist.Hint="Quantity" Height="63"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="336">
+                        <Label Content="Discount:"/>
+                            <ComboBox Foreground="#FFDBAD7F"  x:Name="cmb_discount" Style="{DynamicResource MaterialDesignFilledComboBox}"/>
+                    </StackPanel>
+                </StackPanel>
+                    <Button Background="#FFDBAD7F"  Content="Add Product" Click="AddProduct_Click"  Style="{DynamicResource MaterialDesignRaisedButton}" Margin="0,5,0,0"/>
+            </StackPanel>
+
+            <!-- Selected Products -->
+            <StackPanel Margin="0,10,0,0"  Background="{DynamicResource MaterialDesignPaper}">
+                <Label Content="Selected Products:"/>
+                    <DataGrid Foreground="#FFDBAD7F" x:Name="dgSelectedProducts" AutoGenerateColumns="True"  MaxHeight="160" Background="{DynamicResource MaterialDesignPaper}" Margin="0,5,0,10" CanUserAddRows="False">
+                    <DataGrid.Columns>
+                        <!-- Buttons Column -->
+                        <DataGridTemplateColumn Width="Auto">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="Remove" Click="RemoveButton_Click" Style="{DynamicResource MaterialDesignFlatButton}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+
+            <StackPanel Margin="0,10,0,0" Background="{DynamicResource MaterialDesignPaper}">
+                    <Button Background="#FFDBAD7F"  Content="Confirm Order" Click="ConfirmOrder_Click" Style="{DynamicResource MaterialDesignRaisedButton}" Margin="0,5,0,0"/>
+            </StackPanel>
+        </StackPanel>
+        </Border>
+    </Grid>
+</Page>

@@ -1,0 +1,43 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Inventory.View"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="Inventory.View.SalesDetails"
+      mc:Ignorable="d" 
+      Title="SalesDetails">
+
+    <Grid Loaded="salesHistoryLoaded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <local:Menu Grid.Row="0"/>
+        <Label x:Name="list" 
+               Content="Sales History"
+               Grid.Row="1"
+        HorizontalAlignment="Center" 
+        Foreground="#FFFFD680" 
+        FontSize="24"
+        Width="Auto"/>
+
+
+        <DataGrid
+        x:Name="SalesHistoryGrid"
+            Grid.Row="2"
+        IsReadOnly="True"
+        SelectionMode="Single"
+        GridLinesVisibility="All"
+        Background="#FFDBAD7F"
+        Foreground="Black"
+        BorderBrush="Black"
+        BorderThickness="1"
+        materialDesign:DataGridAssist.CellPadding="12 8"
+        Style="{StaticResource MaterialDesignDataGrid}" >
+
+        </DataGrid>
+    </Grid>
+</Page>

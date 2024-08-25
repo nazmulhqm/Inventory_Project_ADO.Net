@@ -1,0 +1,75 @@
+﻿<Page x:Class="Inventory.View.Contact"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Inventory.View"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      Title="Contact">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <local:Menu Grid.Row="0"/>
+        <Label x:Name="list"
+               Grid.Row="1" 
+               HorizontalAlignment="Center" 
+               Foreground="#FFFFD680" 
+               FontSize="24"
+               Width="Auto" Margin="0,0,0,0"/>
+
+        <TextBox materialDesign:HintAssist.Hint="Search..."
+                 x:Name="txbSearch"
+                 Grid.Row="3" 
+                 Grid.Column="0"
+                 Width="250"
+                 HorizontalAlignment="Left"
+                 VerticalContentAlignment="Top"
+                 Foreground="#FFFFD680" Margin="10,0,0,0" TextChanged="SearchTextBox_TextChanged"/>
+        <DataGrid Grid.Row="4"
+                  x:Name="ContactsGrid"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  GridLinesVisibility="All"
+                  Background="#FFDBAD7F"
+                  Foreground="Black"
+                  BorderBrush="Black"
+                  BorderThickness="1"
+                  materialDesign:DataGridAssist.CellPadding="12 8"
+                  Style="{StaticResource MaterialDesignDataGrid}" 
+                  Margin="0,42,0,0">
+        <DataGrid.Columns>
+
+
+                <!-- Buttons Column -->
+                <DataGridTemplateColumn Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="View" Click="ViewButton_Click"/>
+                                <Button Content="Update" Click="UpdateButton_Click"/>
+                                <Button Content="Delete" Click="DeleteButton_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <Button Content="Create" 
+                x:Name="Create_Click"
+                HorizontalAlignment="Right" 
+                Click="CreateButton_Click"
+                Height="Auto" 
+                Grid.Row="3" 
+                VerticalAlignment="Top"
+                Width="99"
+                Background="#FFDBAD7F"/>
+    </Grid>
+</Page>
