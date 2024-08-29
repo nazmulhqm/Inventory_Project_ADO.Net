@@ -1,7 +1,7 @@
 # Inventory
 
 ## Overview
-Inventory_Project_ADO.Net is a comprehensive inventory management system developed using ADO.NET. This project provides functionalities to manage and track inventory items efficiently, catering to various needs such as stock management, item tracking, and reporting.
+Inventory_Project_ADO.Net is a comprehensive inventory management system developed using ADO.NET. This project provides functionalities to manage and track inventory items efficiently, catering to various needs such as stock management, Sale and reporting.
 
 ## Features
 - CRUD Operations: Create, Read, Update, and Delete inventory items.
