@@ -13,7 +13,7 @@ Inventory_Project_ADO.Net is a comprehensive inventory management system develop
 - ADO.NET: For data access and management.
 - C#: Primary programming language.
 - SQL Server: Database for storing inventory data.
-- WPF: For the user interface (depending on the implementation).
+- WPF: For the user interface.
 
 ## Getting Started
 1. **Clone the Repository**
